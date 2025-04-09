@@ -1,3 +1,10 @@
+// THE CODE HAS NOT BEEN TESTED
+// THIS IS JUST FRAME WORK FOR OUR OWN CODE
+//IT IS SUPPOSED TO PROVIDE IDEAS FOR WHAT TO CODE
+
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
