@@ -15,6 +15,9 @@ int menu_choice;                // variable to store user menu choice
 int height_choice;              // variable to store user height choice
 int weight_choice;              // variable to store user weight choice
 int age_choice;                 // variable to store user age choice
+int bench_choice;               // variable to store user bench choice
+int squat_choice;               // variable to store user squat choice
+int deadlift_choice;            // variable to store user deadlift choice
 
 //Functions 
 void display_menu();        // function to display menu overview 
@@ -80,7 +83,7 @@ while (1) {
         }
     
 
-// Function to print out the menu 
+// FUNCTION TO PRINT OUT THE MENU
 void display_menu(void){
     printf("\n-----------------------------\n"); // soley for visual purpose, to make it more visually appealing 
     printf("\nHello! Welcome to this Gym Tracker!\n\nPlease choose one of the following options from below:\n\n");
@@ -95,7 +98,7 @@ void display_menu(void){
     scanf(" %d", &menu_choice); // scans for the user input of the menu choice 
 }
 
-// ENTER NAME TO SEE IF YOURE IN THE DATA BASE
+// FUNTION TO ENTER NAME TO SEE IF YOURE IN THE DATA BASE
 void enter_names(void){ 
     printf("\n-----------------------------\n");
     printf("\nHello Welcome to this Gym Tracker! Please enter your name so we can see if you're already in out data bank\n\n\n");
@@ -109,8 +112,8 @@ void enter_names(void){
     clear_input_buffer();
 }
 
-
- void check_account(const char* name,) {
+// FUNCTION TO CHECK IF NAME IS IN THE DATABASE
+void check_account(const char* name,) {
     FILE* file = fopen("GymInfo.csv", "r");  // Open the CSV file for reading
     if (file == NULL) {
         perror("Failed to open file"); 
@@ -143,22 +146,23 @@ void enter_names(void){
     }
 }
 
-// Function to clear the input buffer
+
+// FUNCTION TO CLEAR INPUT BUFFER
 void clear_input_buffer(void) {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
 
-// Function to enter weight 
+// FUNCTION TO ENTER WEIGHT
 void enter_weight(){
     printf("Hello! You chose Option 1: 'Enter Weight'\n");
-    printf("Please choose from the following opitons:v\n");
+    printf("Please choose from the following opitons: \n");
     printf("1 - View your current weight\n"); 
     printf("2 - Change your current weight\n"); 
     printf("3 - Return to the main menu\n");
     printf("Please enter your desired option: \n");
-    scanf(" %d", &weight_choice); // scans for the user input of the greeting formality option
+    scanf(" %d", &weight_choice); // scans for the user input 
     clear_input_buffer();
 
  switch (weight_choice){
@@ -186,15 +190,15 @@ void enter_weight(){
     }
 
 
-// Function to enter height 
+// FUNCTION TO ENTER HEIGHT
 void enter_height(){
     printf("Hello! You chose Option 1: 'Enter Height'\n");
-    printf("Please choose from the following opitons:v\n");
+    printf("Please choose from the following options: \n");
     printf("1 - View your current height\n"); 
     printf("2 - Change your current height\n"); 
     printf("3 - Return to the main menu\n");
     printf("Please enter your desired option: \n");
-    scanf(" %d", &height_choice); // scans for the user input of the greeting formality option
+    scanf(" %d", &height_choice); 
     clear_input_buffer();
 
  switch (height_choice){
@@ -221,7 +225,146 @@ void enter_height(){
             break;
     }
 
+// FUNCTION TO ENTER AGE 
+void enter_age(){
+    printf("Hello! You chose Option 1: 'Enter Age'\n");
+    printf("Please choose from the following options: \n");
+    printf("1 - View your current age\n"); 
+    printf("2 - Change your current age\n"); 
+    printf("3 - Return to the main menu\n");
+    printf("Please enter your desired option: \n");
+    scanf(" %d", &age_choice); // scans for the user input of the age
+    clear_input_buffer();
 
+ switch (age_choice){
+     case 1:
+        printf("Hello! You chose Option 1: 'View your current age'\n");
+        // code to view current age
+        clear_input_buffer();
+        
+     case 2: 
+        printf("Hello! You chose Option 2: 'Change your current age'\n");
+        // code to change current age
+        clear_input_buffer();
+        
+     case 3: 
+        printf("Hello! You chose Option 3: 'Return to the main menu'\n");
+        printf("\nFeel free to come back if you change your mind!\nUntil then, I will redirct you back to the menu overview.\n");
+        clear_input_buffer();
+        display_menu();
+        break;
+    
+     default:
+            printf("\nYou did not choose one of the valid options. Please restart from the beginning and choose one of the following options:\n");
+            clear_input_buffer();
+            break;
+    }
+
+// FUNCTION TO ENTER BENCH 
+void enter_bench(){
+    printf("Hello! You chose Option 1: 'Enter Bench'\n");
+    printf("Please choose from the following opitons: \n");
+    printf("1 - View your current bench\n"); 
+    printf("2 - Change your current bench\n"); 
+    printf("3 - Return to the main menu\n");
+    printf("Please enter your desired option: \n");
+    scanf(" %d", &bench_choice); // scans for the user input of 'bench'
+    clear_input_buffer();
+
+ switch (bench_choice){
+     case 1:
+        printf("Hello! You chose Option 1: 'View your current bench'\n");
+        // code to view current bench
+        clear_input_buffer();
+        
+     case 2: 
+        printf("Hello! You chose Option 2: 'Change your current bench'\n");
+        // code to change current bench
+        clear_input_buffer();
+        
+     case 3: 
+        printf("Hello! You chose Option 3: 'Return to the main menu'\n");
+        printf("\nFeel free to come back if you change your mind!\nUntil then, I will redirct you back to the menu overview.\n");
+        clear_input_buffer();
+        display_menu();
+        break;
+    
+     default:
+            printf("\nYou did not choose one of the valid options. Please restart from the beginning and choose one of the following options:\n");
+            clear_input_buffer();
+            break;
+    }
+
+// FUNCTION TO ENTER SQUAT 
+void enter_squat(){
+    printf("Hello! You chose Option 1: 'Enter Squat'\n");
+    printf("Please choose from the following options: \n");
+    printf("1 - View your current squat\n"); 
+    printf("2 - Change your current squat\n"); 
+    printf("3 - Return to the main menu\n");
+    printf("Please enter your desired option: \n");
+    scanf(" %d", &squat_choice); // scans for the user input 
+    clear_input_buffer();
+
+ switch (squat_choice){
+     case 1:
+        printf("Hello! You chose Option 1: 'View your current squat'\n");
+        // code to view current squat
+        clear_input_buffer();
+        
+     case 2: 
+        printf("Hello! You chose Option 2: 'Change your current squat'\n");
+        // code to change current squat
+        clear_input_buffer();
+        
+     case 3: 
+        printf("Hello! You chose Option 3: 'Return to the main menu'\n");
+        printf("\nFeel free to come back if you change your mind!\nUntil then, I will redirct you back to the menu overview.\n");
+        clear_input_buffer();
+        display_menu();
+        break;
+    
+     default:
+            printf("\nYou did not choose one of the valid options. Please restart from the beginning and choose one of the following options:\n");
+            clear_input_buffer();
+            break;
+    }
+
+
+// FUNCTION TO ENTER DEADLIFT  
+void enter_deadlift(){
+    printf("Hello! You chose Option 1: 'Enter Deadlift'\n");
+    printf("Please choose from the following options: \n");
+    printf("1 - View your current deadlift\n"); 
+    printf("2 - Change your current deadlift\n"); 
+    printf("3 - Return to the main menu\n");
+    printf("Please enter your desired option: \n");
+    scanf(" %d", &deadlift_choice); // scans for the user input
+    clear_input_buffer();
+
+ switch (deadlift_choice){
+     case 1:
+        printf("Hello! You chose Option 1: 'View your current deadlift'\n");
+        // code to view current deadlift
+        clear_input_buffer();
+        
+     case 2: 
+        printf("Hello! You chose Option 2: 'Change your current deadlift'\n");
+        // code to change current deadlift
+        clear_input_buffer();
+        
+     case 3: 
+        printf("Hello! You chose Option 3: 'Return to the main menu'\n");
+        printf("\nFeel free to come back if you change your mind!\nUntil then, I will redirct you back to the menu overview.\n");
+        clear_input_buffer();
+        display_menu();
+        break;
+    
+     default:
+            printf("\nYou did not choose one of the valid options. Please restart from the beginning and choose one of the following options:\n");
+            clear_input_buffer();
+            break;
+    }
 
 
 
