@@ -7,30 +7,23 @@ int main(){
 #define max_attempts 3          // defining the maximum attempts possible (3)
 
 //Global Variables (Characters)
-char firstname[20] = "";            // variable to store the first name
-char lastname[20] = "";             // variable to store the last name
-char nickname[20] = "";             // variable to store the nickname 
-char delete_secondchoice;       // variable to store yes or no option in the 'delete_name' function
-char delete_firstname;          // varibale to store yes or no option in the 'delete_name' function
-char delete_lastname;           // variable to store yes or no option in the 'delete_name' function
-char delete_nickname;           // variable to store yes or no option in the 'delete_name' function
-
+char name[20] = "";             // variable to store the first name
 
 // Global Variables (Integers)
 int invalid_attempts = 0;
 int menu_choice;                // variable to store user menu choice
-int delete_choice;              // variable to store user choice of which name to delete  
-int greeting_formality;         // variable to store user formalitiy choice
 
 //Functions 
-void display_menu ();        // function to display menu overview 
-void enter_names();          // function for menu option 1
-void enter_nicknames();      // function for menu option 2
-void decide_greeting ();     // function for menu option 3
-void delete_name ();         // function for menu option 4
-void clear_input_buffer();   // function to clear the input buffer
-
-void check_account();        // check if name exists 
+void display_menu();        // function to display menu overview 
+void enter_names();         // function to enter name
+void enter_weight();        // function for menu option 1
+void enter_height();        // function for menu option 2
+void enter_age();           // function for menu option 3
+void enter_bench();         // function for menu option 4
+void enter_squat();         // function for menu option 5
+void enter_deadlift();      // function for menu option 6
+void clear_input_buffer();  // function to clear the input buffer
+void check_account();       // function to check if name exists 
 
 // Main Function 
 int main() {
