@@ -34,7 +34,15 @@ void check_account();        // check if name exists
 
 // Main Function 
 int main() {
-enter_name();
+enter_name();         // enter name to check if youre in the data base
+
+
+
+
+
+
+
+    
 
     while (1) {
         display_menu ();      // funciton to display menu overview
