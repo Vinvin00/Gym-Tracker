@@ -12,6 +12,9 @@ char name[50] = "";             // variable to store the first name
 // Global Variables (Integers)
 int invalid_attempts = 0;
 int menu_choice;                // variable to store user menu choice
+int height_choice;              // variable to store user height choice
+int weight_choice;              // variable to store user weight choice
+int age_choice;                 // variable to store user age choice
 
 //Functions 
 void display_menu();        // function to display menu overview 
@@ -183,6 +186,40 @@ void enter_weight(){
     }
 
 
+// Function to enter height 
+void enter_height(){
+    printf("Hello! You chose Option 1: 'Enter Height'\n");
+    printf("Please choose from the following opitons:v\n");
+    printf("1 - View your current height\n"); 
+    printf("2 - Change your current height\n"); 
+    printf("3 - Return to the main menu\n");
+    printf("Please enter your desired option: \n");
+    scanf(" %d", &height_choice); // scans for the user input of the greeting formality option
+    clear_input_buffer();
+
+ switch (height_choice){
+     case 1:
+        printf("Hello! You chose Option 1: 'View your current height'\n");
+        // code to view current height
+        clear_input_buffer();
+        
+     case 2: 
+        printf("Hello! You chose Option 2: 'Change your current height'\n");
+        // code to change current height
+        clear_input_buffer();
+        
+     case 3: 
+        printf("Hello! You chose Option 3: 'Return to the main menu'\n");
+        printf("\nFeel free to come back if you change your mind!\nUntil then, I will redirct you back to the menu overview.\n");
+        clear_input_buffer();
+        display_menu();
+        break;
+    
+     default:
+            printf("\nYou did not choose one of the valid options. Please restart from the beginning and choose one of the following options:\n");
+            clear_input_buffer();
+            break;
+    }
 
 
 
