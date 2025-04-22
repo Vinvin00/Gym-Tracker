@@ -167,22 +167,13 @@ void enter_names(void){
     printf("\nIf not, please put in your first name: \n");
     fgets(" %s", firstname); // scans for the user input of the first name or skip option 
 
-    if (firstname[0] == 's' && firstname[1] == '\0') { // means that if the user input a 's' he decided to skip putting in his names
-        firstname[0] = '\0'; // resets the first name (from 's' to nothing)
+    if (name[0] == 's' && name[1] == '\0') { // means that if the user input a 's' he decided to skip putting in his names
+        name[0] = '\0'; // resets the first name (from 's' to nothing)
         printf("\nYou chose to skip entering your first name.\n");
     } else {
         printf("\nYou entered the first name: %s\n", firstname); // scans for the users first name input and display it here if user entered it 
     }
-    clear_input_buffer();
-    printf("\nNow, please put in your last name (or press 's' to skip):\n");
-    fgets(" %s", lastname);  // scans for the user input of the last name or skip option 
 
-    if (lastname[0] == 's' && lastname[1] == '\0') { // again, means that if the user input a 's' he decided to skip putting in his names
-        lastname[0] = '\0'; // resets the last name (from 's' to nothing)
-        printf("\nYou chose to skip entering your last name.\n");
-    } else {
-        printf("\nYou entered the last name: %s.\n\n", lastname); // scans for the users last name input and display it here if user entered it 
-    }
     clear_input_buffer();
     printf("\nThank you, we're now going to see if you already have an account!) 
     check_account; 
@@ -202,8 +193,7 @@ void enter_names(void){
 
     // Read each line from the CSV
     while (fgets(line, sizeof(line), file)) {
-        char file_firstname[50];  // Adjust size as necessary
-        char file_lastname[50];    // Adjust size as necessary
+        char file_name[50];  // Adjust size as necessary
 
         // Split the line into first name and last name
         sscanf(line, "%49[^,],%49s", file_firstname, file_lastname);  // Assume comma-separated
