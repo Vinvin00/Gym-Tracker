@@ -140,246 +140,32 @@ void enter_names(void){
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Option Two: Function to enter a nickname
-void enter_nicknames(void){ 
-    printf("\n-----------------------------\n");
-    printf("\nYou chose Option 2: 'Enter a nickname'\n\n");     
-    printf("If you want to skip your nickname please press 's'.\n");
-    printf("\nIf not, please put in your desired nickname: \n");
-    fgets(" %s", nickname); // scans for the user input of the nickname or skip option
-
-    if (nickname[0] == 's' && nickname[1] == '\0') { // again, means that if the user input a 's' he decided to skip putting in his names
-        nickname[0] = '\0';
-        printf("\nYou chose to skip entering your nickname.\n");
-    } else {
-        printf("\nYou entered the nickname: %s.\n", nickname); // scans for the users nickname input and display it here if user entered it 
-    }
-    clear_input_buffer();
-    printf("\nThank you, you're all done here!\nPress ENTER to return to the menu\n\n");
-    clear_input_buffer();
-}
-
 // Function to clear the input buffer
 void clear_input_buffer(void) {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
-    
-// Option Three: Funtiong to notify the user of the intention to greet them. Requests their preferred level of formality.      
-void decide_greeting(void){ 
-    printf("\n-----------------------------\n");
-    printf("\nYou chose Option 3: 'Choose a greeting'\n\nPlease choose a level of formality of how you would like me to greet you:\n\n");
-    printf("Option 1: Informal Greeting (using the nickname and casual language)\n");
-    printf("Option 2: Medium Formal Greeting (using just the name)\n");
-    printf("Option 3: Formal Greeting (using the name and surname)\n\n");
-    printf("Please enter your desired option: \n");
-    scanf(" %d", &greeting_formality); // scans for the user input of the greeting formality option
-    clear_input_buffer();
 
-    if (greeting_formality == 1){
-        if (nickname[0] != '\0'){ // checks the condition that a nickname was previously entered
-            printf("\nYou chose Option 1: Informal\n");
-            printf("\nHey what's up, %s!\n\n", nickname); // inserts the nickname previously chosen by the user
-            printf("Thank you for choosing 'Informal Greeting'!\nPress ENTER to return to the menu\n");
-            clear_input_buffer();
 
-        } else {
-            printf("\n\nYou have not provided me with your nickname yet.\nPlease choose a nickname first and then return to this section to choose this greeting option!\n"); 
-            clear_input_buffer();
-        }
-    } else if (greeting_formality == 2){  
-        if (firstname[0] != '\0'){ // checks the condition that a first name was previously entered
-            printf("\nYou chose Option 2: Medium Formal\n");
-            printf("\nHey %s!\n\n", firstname); // inserts the first name previously chosen by the user
-            printf("Thank you for choosing 'Medium Formal Greeting'!\nPress ENTER to return to the menu\n");
-            clear_input_buffer();   
-            
-        } else {
-            printf("\n\nYou have not provided me with your first name yet.\nPlease choose a name first and then return to this section to choose this greeting option!\n");  
-            clear_input_buffer();
-        }
-    } else if (greeting_formality == 3){  
-        if (firstname[0] != '\0'|| lastname[0] != '\0'){ // checks the condition that both first and last name were previously entered
-            printf("\nYou chose Option 3: Formal\n");
-            printf("\nHello %s %s.\n\n", firstname, lastname); // inserts the first and last name previously chosen by the user
-            printf("Thank you for choosing 'Formal Greeting'!\nPress ENTER to return to the menu\n");
-            clear_input_buffer();
 
-        } else {
-            printf("\n\nYou have not provided me with your first and last name yet.\nPlease choose a name first and then return to this section to choose this greeting option!\n"); 
-            clear_input_buffer();        
-        }
-    } else {
-        printf("\nYou chose none of the valid options provided.\n");
-        printf("\nInvalid Option.\nPlease try again!\n");
-        clear_input_buffer();
-    }
-}
 
-// Option Four: Function to allow the user to delete their name, surname and/or nickname        
-void delete_name(void){
-    printf("-----------------------------\n");
-    printf("\nYou chose Option 4: 'Delete Naming Information'\n\n");
 
-    printf("\nPlease choose which name you would like to delete:\n\n");
 
-    printf("Option 1: Name\n");
-    printf("Option 2: Surname\n");
-    printf("Option 3: Nickname\n");
-    printf("Option 4: Do not delete any name and return back to the menu overview\n");
-            
-    printf("\nEnter your choice: \n");
-    scanf(" %d", &delete_choice); // scans for the user choice of what to delete
-    clear_input_buffer();
-            
-    switch (delete_choice){
-        case 1: 
-            printf("-----------------------------\n");
-            printf("\nYou chose 'Option 1: Name'\n");
-            if (firstname[0] != '\0') { // checks the condition that a first name was previously entered
-                printf("\nYou previously entered your name '%s'\n", firstname); // inserts the first name previously chosen by the user
-                printf("\nAre you sure you would like to delete it? (y/n)\n");
-                scanf(" %c", &delete_firstname); // scans for the user choice of whether or not to delete the name
-                clear_input_buffer();
-                        
-                if (delete_firstname == 'y' || delete_firstname == 'Y'){ // conditional for the case that the user want to delete the name
-                    firstname[0] = '\0'; // deletes/resents the name
-                    printf("\nYou have successfully deleted your name!\n");
-                    clear_input_buffer();
 
-                } else if (delete_firstname != 'y' || delete_firstname != 'Y'|| delete_firstname != 'n' || delete_firstname != 'N'){ // conditional for the case that the user did not put in a valid option
-                    printf("\nYou did not choose one of the valid options. Please restart from the beginning.\n");
-                    clear_input_buffer();
-                    return;
 
-                } else {
-                    printf("\nGreat Choice! It is a beautiful name, why would you like to delete it anyways?\n");
-                }
-                
-            } else {
-                printf("\nYou have not provided me with your name yet.\nPlease return to the menu overview and choose a name first.\n");
-                clear_input_buffer();
-            }
-            break;
 
-        case 2: 
-            printf("-----------------------------\n");
-            printf("\nYou chose 'Option 2: Surname'\n");
-            if (lastname[0] != '\0'){ // checks the condition that a last name was previously entered
-                printf("\nYou previously entered your last name '%s'\n", lastname); // inserts the last name previously chosen by the user
-                printf("\nAre you sure you would like to delete it? (y/n)\n");
-                scanf(" %c", &delete_lastname); // scans for the user choice of whether or not to delete the name
-                clear_input_buffer();
-                        
-                if (delete_lastname == 'y' || delete_lastname == 'Y'){ // conditional for the case that the user want to delete the name
-                    lastname[0] = '\0'; // deletes/resents the name
-                    printf("\nYou have successfully deleted your lastname!\n");
-                    clear_input_buffer();
 
-                } else if (delete_lastname != 'y' || delete_lastname != 'Y'|| delete_lastname != 'n' || delete_lastname != 'N'){ // conditional for the case that the user did not put in a valid option
-                    printf("\nYou did not choose one of the valid options. Please restart from the beginning.\n");
-                    clear_input_buffer();
-                    return;
 
-                } else {
-                    printf("\nGreat Choice! It is a beautiful last name, why would you like to delete it anyways?\n");
-                }
-                
-            } else {
-                printf("\nYou have not provided me with your last name yet.\nPlease return to the menu overview and choose a last name first.\n");
-                clear_input_buffer();
-            }
-            break;
 
-        case 3:
-            printf("-----------------------------\n");
-            printf("\nYou chose 'Option 3: Nickname'\n");
-            if (nickname[0] != '\0'){ // checks the condition that a nickname was previously entered
-                printf("\nYou previously entered your nickname '%s'\n", nickname); // inserts the nickname previously chosen by the user
-                printf("\nAre you sure you would like to delete it? (y/n)\n");
-                scanf(" %c", &delete_nickname); // scans for the user choice of whether or not to delete the name
-                clear_input_buffer();
-                        
-                if (delete_nickname == 'y' || delete_nickname == 'Y'){ // conditional for the case that the user want to delete the name
-                    nickname[0] = '\0'; // deletes/resents the name
-                    printf("\nYou have successfully deleted your nickname!\n");
-                    clear_input_buffer();
-                
-                } else if (delete_nickname != 'y' || delete_nickname != 'Y'|| delete_nickname != 'n' || delete_nickname != 'N'){ // conditional for the case that the user did not put in a valid option
-                    printf("\nYou did not choose one of the valid options. Please restart from the beginning.\n");
-                    clear_input_buffer();
-                    return;
-                
-                } else {
-                    printf("\nGreat Choice! It is a beautiful nickname, why would you like to delete it anyways?\n");
-                }
 
-                
-            } else {
-                printf("\nYou have not provided me with your nickname yet.\nPlease return to the menu overview and choose a nickname first.\n");
-                clear_input_buffer();
-            }
-            break;
- 
-        case 4: 
-            printf("-----------------------------\n");
-            printf("\nYou chose 'Option 4: Do not delete any name and return back to the menu overview'\n");
-            printf("\nFeel free to come back if you change your mind!\nUntil then, I will redirct you back to the menu overview.\n");
-            clear_input_buffer();
-            display_menu();
-            break;
 
-        default:
-            printf("\nYou did not choose one of the valid options. Please restart from the beginning and choose one of the following options:\n");
-            clear_input_buffer();
-            break;
-    }
-        
-    printf("\nWould you like to delete anything else (y/n)?\n"); // checking if the user wants to delete anything else
-    scanf(" %c", &delete_secondchoice); // scans for the users choice
-    clear_input_buffer();
-    if (delete_secondchoice == 'y' || delete_secondchoice == 'Y'){ // conditional for the case that the user want to delete another name
-        printf("-----------------------------\n"); 
-        printf("\nPlease start over and choose what other name you would like to delete:\n\n");
-        delete_name();
-        
-    } else if (delete_secondchoice != 'y' || delete_secondchoice != 'Y'|| delete_secondchoice != 'n' || delete_secondchoice != 'N'){ // conditional for the case that the user did not put in a valid option
-        printf("\nYou did not choose one of the valid options. Please restart from the beginning.\n");
-        clear_input_buffer();
-        
-    } else {
-        printf("\nYou chose not to delete any other names.\nPress ENTER to return to the menu.\n");
-        clear_input_buffer();
-    
-    }
-}
+
+
+
+
+
+
+
+
+
 
