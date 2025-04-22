@@ -77,56 +77,7 @@ while (1) {
         }
     
 
-
-    while (1) {
-        display_menu ();      // function to display menu overview
-       
-        // user can choose from the menu in front of him, cases 1, 2, 3, 4 and 9 refer to functions, which are to be found below. 
-        // Case 5 terminates the program whilst the 'default' case represents the invalid attempts, which are also shown to the user to keep track on. 
-        switch (menu_choice){       
-            case 1: 
-                enter_names();
-                break;
-
-            case 2: 
-                enter_nicknames(); 
-                break;
-
-            case 3:
-                decide_greeting();
-                break;
-
-            case 4: 
-                delete_name();
-                break;
-            
-            case 5:
-                printf("-----------------------------\n");
-                printf("\nYou chose option 5!\n\nIt's a shame you don't want to continue!\nGoodbye.\n\nThis program terminates here :( \n\n");
-                return 0;
-
-            case 9: // special surprise function (please don't be too harsh on my easter bunny, I tried my best :) ...)
-                print_easteregg();
-                break;
-
-            default: 
-                invalid_attempts++;
-                printf("\nThis is not a valid option.\n");
-                printf("So far you have entered %d invalid option(s).\n", invalid_attempts);
-                
-                if (invalid_attempts >= max_attempts) { // Checking whether its more than 3 attempts
-                    printf("\nYou don't seem too interested in speaking with me...\nGoodbye!\n\n");
-                    return 0;
-                
-                } else {
-                    printf("\nPlease press ENTER to try again!\n");
-                    clear_input_buffer();
-                }      
-        }
-    }
-}
-
-// Function to print out the menu (
+// Function to print out the menu 
 void display_menu(void){
     printf("\n-----------------------------\n"); // soley for visual purpose, to make it more visually appealing 
     printf("\nHello! Welcome to this Gym Tracker!\n\nPlease choose one of the following options from below:\n\n");
@@ -189,25 +140,34 @@ void enter_names(void){
     }
 }
 
-void enter_names(void) { 
-    char firstname[50];  // Assuming a reasonable max size for the names
-    char lastname[50];
 
-    printf("\nPlease enter your first name: ");
-    fgets(firstname, sizeof(firstname), stdin);
-    // Remove newline character if present
-    firstname[strcspn(firstname, "\n")] = '\0'; 
 
-    printf("\nNow, please put in your last name: ");
-    fgets(lastname, sizeof(lastname), stdin);
-    // Remove newline character if present
-    lastname[strcspn(lastname, "\n")] = '\0'; 
 
-    // Now check if the names exist in the GymInfo.csv file
-    check_account(firstname, lastname);
 
-    printf("\nThank you, we're now going to see if you already have an account!\n");
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Option Two: Function to enter a nickname
 void enter_nicknames(void){ 
