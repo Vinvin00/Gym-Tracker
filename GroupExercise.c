@@ -41,25 +41,32 @@ while (1) {
         case 1: 
             enter_weight(); 
             break;
+        
         case 2: 
             enter_height(); 
             break;
+        
         case 3: 
             enter_age();
             break;
+        
         case 4: 
             enter_bench(); 
             break;
+        
         case 5: 
             enter_squat();
             break;
+        
         case 6:
             enter_deadlift(); 
             break;
+        
         case 7:
                 printf("-----------------------------\n");
                 printf("\nYou chose option 7!\n\nIt's a shame you don't want to continue!\nGoodbye.\n\nThis program terminates here :( \n\n");
                 return 0;
+        
         default: 
                 invalid_attempts++;
                 printf("\nThis is not a valid option.\n");
