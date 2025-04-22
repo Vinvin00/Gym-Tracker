@@ -90,7 +90,7 @@ while (1) {
 
 // FUNCTIONS       
         
-// Function to print out the menu 
+// Function to print out the menu (
 void display_menu(void){
     printf("\n-----------------------------\n"); // soley for visual purpose, to make it more visually appealing 
     printf("\nHello! Welcome to this Gym Tracker!\n\nPlease choose one of the following options from below:\n\n");
