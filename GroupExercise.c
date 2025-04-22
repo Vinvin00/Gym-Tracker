@@ -163,16 +163,9 @@ void display_menu(void){
 void enter_names(void){ 
     printf("\n-----------------------------\n");
     printf("\nHello Welcome to this Gym Tracker! Please enter your name so we can see if you're already in out data bank\n\n\n");
-    printf("If you want to skip your first name please press 's'.\n");
-    printf("\nIf not, please put in your first name: \n");
     fgets(" %s", firstname); // scans for the user input of the first name or skip option 
 
-    if (name[0] == 's' && name[1] == '\0') { // means that if the user input a 's' he decided to skip putting in his names
-        name[0] = '\0'; // resets the first name (from 's' to nothing)
-        printf("\nYou chose to skip entering your first name.\n");
-    } else {
-        printf("\nYou entered the first name: %s\n", firstname); // scans for the users first name input and display it here if user entered it 
-    }
+    printf("\nYou entered the name: %s\n", firstname); // scans for the users first name input and display it here if user entered it 
 
     clear_input_buffer();
     printf("\nThank you, we're now going to see if you already have an account!) 
@@ -181,10 +174,10 @@ void enter_names(void){
 }
 
 
- void check_account(const char* firstname, const char* lastname) {
+ void check_account(const char* name,) {
     FILE* file = fopen("GymInfo.csv", "r");  // Open the CSV file for reading
     if (file == NULL) {
-        perror("Failed to open file"); // whats perror? 
+        perror("Failed to open file"); 
         return;
     }
 
@@ -196,7 +189,7 @@ void enter_names(void){
         char file_name[50];  // Adjust size as necessary
 
         // Split the line into first name and last name
-        sscanf(line, "%49[^,],%49s", file_firstname, file_lastname);  // Assume comma-separated
+        sscanf(line, "%49[^,], name);  // Assume comma-separated
 
         // Check if the names match
         if (strcmp(firstname, file_firstname) == 0 && strcmp(lastname, file_lastname) == 0) {
