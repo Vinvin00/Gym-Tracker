@@ -84,21 +84,8 @@ while (1) {
     
 
 
-        
-        
-
-
-
-
-
-
-    
-
-
-    
-
     while (1) {
-        display_menu ();      // funciton to display menu overview
+        display_menu ();      // function to display menu overview
        
         // user can choose from the menu in front of him, cases 1, 2, 3, 4 and 9 refer to functions, which are to be found below. 
         // Case 5 terminates the program whilst the 'default' case represents the invalid attempts, which are also shown to the user to keep track on. 
