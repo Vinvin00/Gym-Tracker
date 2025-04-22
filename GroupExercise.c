@@ -4,10 +4,10 @@
 #incluse 'GymInfo.cvs' // including csv file 
 
 int main(){
-#define max_attempts 3          // defining the maximum attempts possible (3)
+#define max_attempts 3          // defining the maximum attempts possible (3) => DO WE NEED THAT? 
 
 //Global Variables (Characters)
-char name[20] = "";             // variable to store the first name
+char name[50] = "";             // variable to store the first name
 
 // Global Variables (Integers)
 int invalid_attempts = 0;
@@ -28,7 +28,8 @@ void check_account();       // function to check if name exists
 // Main Function 
 int main() {
 while (1) {
-    enter_name();         // enter name to check if youre in the data base
+    enter_name();            // enter name to check if youre in the data base
+    display_menu();          // display menu 
 
     switch (menu_choice){
         case 1: 
