@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#incluse 'GymInfo.cvs' // including csv file 
 
 int main(){
 #define max_attempts 3          // defining the maximum attempts possible (3)
 
 //Global Variables (Characters)
-char firstname[20] = "";             // variable to store the first name
-char lastname[20] = "";              // variable to store the last name
-char nickname[20] = "";              // variable to store the nickname 
+char firstname[20] = "";            // variable to store the first name
+char lastname[20] = "";             // variable to store the last name
+char nickname[20] = "";             // variable to store the nickname 
 char delete_secondchoice;       // variable to store yes or no option in the 'delete_name' function
 char delete_firstname;          // varibale to store yes or no option in the 'delete_name' function
 char delete_lastname;           // variable to store yes or no option in the 'delete_name' function
@@ -97,7 +98,7 @@ void display_menu(void){
     scanf(" %d", &menu_choice); // scans for the user input of the menu choice 
 }
 
-// Option One: Function to enter names 
+// ENTER NAME TO SEE IF YOURE IN THE DATA BASE
 void enter_names(void){ 
     printf("\n-----------------------------\n");
     printf("\nHello Welcome to this Gym Tracker! Please enter your name so we can see if you're already in out data bank\n\n\n");
