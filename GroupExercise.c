@@ -171,11 +171,16 @@ void enter_weight(){
         // code to view current weight
         clear_input_buffer();
         
-     case 2: 
+     case 2: {
+        int new_weight;
         printf("Hello! You chose Option 2: 'Change your current weight'\n");
-        // code to change current weight
+        printf("Please enter your new weight!\n");
+        scanf("%d", &new_weight);
         clear_input_buffer();
-        
+        writecsv("GymInfo.csv", "Weight", new_weight);
+        printf("Nice! Your new weight has been recorded!");
+        break; 
+     }
      case 3: 
         printf("Hello! You chose Option 3: 'Return to the main menu'\n");
         printf("\nFeel free to come back if you change your mind!\nUntil then, I will redirct you back to the menu overview.\n");
@@ -207,10 +212,16 @@ void enter_height(){
         // code to view current height
         clear_input_buffer();
         
-     case 2: 
+     case 2: {
+        int new_height; 
         printf("Hello! You chose Option 2: 'Change your current height'\n");
-        // code to change current height
+        printf("Please enter your new height!\n");
+        scanf("%d", &new_height);
         clear_input_buffer();
+        writecsv("GymInfo.csv", "Height", new_height);
+        printf("Nice! Your new height has been recorded!");
+        break; 
+     }
         
      case 3: 
         printf("Hello! You chose Option 3: 'Return to the main menu'\n");
@@ -242,10 +253,16 @@ void enter_age(){
         // code to view current age
         clear_input_buffer();
         
-     case 2: 
+     case 2: {
+        int new_age; 
         printf("Hello! You chose Option 2: 'Change your current age'\n");
-        // code to change current age
+        printf("Please enter your new age!\n");
+        scanf("%d", &new_age);
         clear_input_buffer();
+        writecsv("GymInfo.csv", "Age", new_age);
+        printf("Nice! Your new age has been recorded!");
+        break;
+     }
         
      case 3: 
         printf("Hello! You chose Option 3: 'Return to the main menu'\n");
@@ -277,10 +294,16 @@ void enter_bench(){
         // code to view current bench
         clear_input_buffer();
         
-     case 2: 
+     case 2:{
+        int new_bench; 
         printf("Hello! You chose Option 2: 'Change your current bench'\n");
-        // code to change current bench
+        printf("Please enter your new bench!\n");
+        scanf("%d", &new_bench);
         clear_input_buffer();
+        writecsv("GymInfo.csv", "Bench", new_bench);
+        printf("Nice! Your new bench has been recorded!");
+        break;
+     }
         
      case 3: 
         printf("Hello! You chose Option 3: 'Return to the main menu'\n");
@@ -312,10 +335,16 @@ void enter_squat(){
         // code to view current squat
         clear_input_buffer();
         
-     case 2: 
+     case 2:{
+        int new_squat; 
         printf("Hello! You chose Option 2: 'Change your current squat'\n");
-        // code to change current squat
+        printf("Please enter your new squat!\n");
+        scanf("%d", &new_squat);
         clear_input_buffer();
+        writecsv("GymInfo.csv", "Squat", new_squat);
+        printf("Nice! Your new squat has been recorded!");
+        break;
+     }
         
      case 3: 
         printf("Hello! You chose Option 3: 'Return to the main menu'\n");
@@ -348,10 +377,16 @@ void enter_deadlift(){
         // code to view current deadlift
         clear_input_buffer();
         
-     case 2: 
+     case 2:{
+        int new_dl; 
         printf("Hello! You chose Option 2: 'Change your current deadlift'\n");
-        // code to change current deadlift
+        printf("Please enter your new deadlift!\n");
+        scanf("%d", &new_dl);
         clear_input_buffer();
+        writecsv("GymInfo.csv", "Deadlift", new_dl);
+        printf("Nice! Your new deadlift has been recorded!");
+        break;
+     }
         
      case 3: 
         printf("Hello! You chose Option 3: 'Return to the main menu'\n");
@@ -367,6 +402,18 @@ void enter_deadlift(){
     }
 
 
+//FUNCTION TO WRITE IN CSV FILE
+void write_csv(const char *filename, const char *area, int value) {
+    FILE *file = fopen(filename, "w");  //OPENS AND WRITES IN THE CSV FILE, OVERWRITES AND REPLACES ENTRY
+
+    if (!file) {
+        perror("I'm sorry we couldn't open the CSV file :("); //ERROR MESSAGE TO DISPLAY IF FILE DID NOT OPEN CORRECTLY
+        return;
+    }
+
+    fprintf(file, "%s;%s;%d\n", name, area, value);  // PRINTS INTO FILE 
+    fclose(file); //CLOSES FILE
+}
 
 
 
