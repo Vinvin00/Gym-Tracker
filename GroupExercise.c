@@ -27,13 +27,14 @@ void enter_names();          // function for menu option 1
 void enter_nicknames();      // function for menu option 2
 void decide_greeting ();     // function for menu option 3
 void delete_name ();         // function for menu option 4
-void print_easteregg();      // function to print surprise easter egg
 void clear_input_buffer();   // function to clear the input buffer
+
+void check_account();        // check if name exists 
 
 // Main Function 
 int main() {
+enter_name();
 
- 
     while (1) {
         display_menu ();      // funciton to display menu overview
        
@@ -41,7 +42,7 @@ int main() {
         // Case 5 terminates the program whilst the 'default' case represents the invalid attempts, which are also shown to the user to keep track on. 
         switch (menu_choice){       
             case 1: 
-                enter_names(); // 
+                enter_names();
                 break;
 
             case 2: 
@@ -121,8 +122,64 @@ void enter_names(void){
         printf("\nYou entered the last name: %s.\n\n", lastname); // scans for the users last name input and display it here if user entered it 
     }
     clear_input_buffer();
-    printf("\nThank you, you're all done here!\nPress ENTER to return to the menu");
+    printf("\nThank you, we're now going to see if you already have an account!) 
+    check_account; 
     clear_input_buffer();
+}
+
+
+ void check_account(const char* firstname, const char* lastname) {
+    FILE* file = fopen("GymInfo.csv", "r");  // Open the CSV file for reading
+    if (file == NULL) {
+        perror("Failed to open file"); // whats perror? 
+        return;
+    }
+
+    char line[MAX_LINE_LENGTH];
+    int found = 0;
+
+    // Read each line from the CSV
+    while (fgets(line, sizeof(line), file)) {
+        char file_firstname[50];  // Adjust size as necessary
+        char file_lastname[50];    // Adjust size as necessary
+
+        // Split the line into first name and last name
+        sscanf(line, "%49[^,],%49s", file_firstname, file_lastname);  // Assume comma-separated
+
+        // Check if the names match
+        if (strcmp(firstname, file_firstname) == 0 && strcmp(lastname, file_lastname) == 0) {
+            found = 1;
+            break;
+        }
+    }
+
+    fclose(file);  // Close the file
+
+    if (found) {
+        printf("Welcome back, %s %s! You already have an account.\n", firstname, lastname);
+    } else {
+        printf("It seems you don't have an account yet.\n");
+    }
+}
+
+void enter_names(void) { 
+    char firstname[50];  // Assuming a reasonable max size for the names
+    char lastname[50];
+
+    printf("\nPlease enter your first name: ");
+    fgets(firstname, sizeof(firstname), stdin);
+    // Remove newline character if present
+    firstname[strcspn(firstname, "\n")] = '\0'; 
+
+    printf("\nNow, please put in your last name: ");
+    fgets(lastname, sizeof(lastname), stdin);
+    // Remove newline character if present
+    lastname[strcspn(lastname, "\n")] = '\0'; 
+
+    // Now check if the names exist in the GymInfo.csv file
+    check_account(firstname, lastname);
+
+    printf("\nThank you, we're now going to see if you already have an account!\n");
 }
 
 // Option Two: Function to enter a nickname
@@ -339,26 +396,3 @@ void delete_name(void){
     }
 }
 
-// Printing a little surprise easter egg when the number 9 is entered
-void print_easteregg(){
-    printf("\nBecause if there's an easter egg, the bunny can't be too far away... (yes, this is the attempt of an easter bunny!)\n\n");
-    
-    printf("      /\\/\\\n");
-    printf("     /    \\\n");
-    printf("    ( o.o )\n");
-    printf("     ==\u2014==\n");  
-    printf("      \\  /\n");
-    printf("       --\n");
-    
-    printf("      _____  \n");
-    printf("     /     \\ \n");
-    printf("    |       | \n");
-    printf("    |   9   | \n");
-    printf("    |       | \n");
-    printf("     \\_____/ \n");
-    
-    clear_input_buffer();
-    printf("\n\nPress ENTER to get back to the menu overview.\n");
-    clear_input_buffer();
-}
-}
