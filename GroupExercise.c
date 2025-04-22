@@ -145,16 +145,17 @@ while (1) {
     }
 }
 
-// Function to print out the menu 
+// Function to print out the menu (
 void display_menu(void){
     printf("\n-----------------------------\n"); // soley for visual purpose, to make it more visually appealing 
     printf("\nHello! Welcome to this Gym Tracker!\n\nPlease choose one of the following options from below:\n\n");
-    printf("Option 1: Enter your name and lastname\n");
-    printf("Option 2: Enter a nickname\n");
-    printf("Option 3: Choose a greeting\n");
-    printf("Option 4: Delete naming information\n");
-    printf("Option 5: Exit the menu\n");
-    printf("\n\n\n(Pssssst...Enter '9' for a little easter surprise...)\n");
+    printf("Option 1: Enter your weight\n");
+    printf("Option 2: Enter your height\n");
+    printf("Option 3: Enter your age\n");
+    printf("Option 4: Access your 'bench' tracker \n");
+    printf("Option 5: Access your 'squat' tracker \n");
+    printf("Option 6: Access your 'deadlift' tracker \n");
+    printf("Option 7: Exit the menu\n");
     printf("\nPlease enter your choice: ");
     scanf(" %d", &menu_choice); // scans for the user input of the menu choice 
 }
