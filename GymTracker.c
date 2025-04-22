@@ -137,3 +137,5 @@ void searchUserByName(GymUser users[], int count, const char* name) {
     int found = 0;
     for (int i = 0; i < count; i++) {
         char lowerUser[30], lowerName[30];
+    }
+}
