@@ -158,27 +158,29 @@ void enter_weight(){
     scanf(" %d", &weight_choice); // scans for the user input of the greeting formality option
     clear_input_buffer();
 
- if (weight_choice == 1){
-            // code to view current weight
-            clear_input_buffer();
-        }
-    
-    } else if (weight_choice == 2){  
-         // code to change current weight
-            clear_input_buffer();
-        }
-
-    } else if (weight_choice == 3){  
-         // code to return to main menu
-            clear_input_buffer();
-        }
-
-    } else {
-        printf("\nYou chose none of the valid options provided.\n");
-        printf("\nInvalid Option.\nPlease try again!\n");
+ switch (weight_choice){
+     case 1:
+        printf("Hello! You chose Option 1: 'View your current weight'\n");
+        // code to view current weight
         clear_input_buffer();
+        
+     case 2: 
+        printf("Hello! You chose Option 2: 'Change your current weight'\n");
+        // code to change current weight
+        clear_input_buffer();
+        
+     case 3: 
+        printf("Hello! You chose Option 3: 'Return to the main menu'\n");
+        printf("\nFeel free to come back if you change your mind!\nUntil then, I will redirct you back to the menu overview.\n");
+        clear_input_buffer();
+        display_menu();
+        break;
+    
+     default:
+            printf("\nYou did not choose one of the valid options. Please restart from the beginning and choose one of the following options:\n");
+            clear_input_buffer();
+            break;
     }
-}
 
 
 
