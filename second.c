@@ -32,10 +32,14 @@ void clear_input_buffer();   // function to clear the input buffer
 
 void check_account();        // check if name exists 
 
-// Main Function 
+
+
+
+// MAIN FUNCTION 
 int main() {
 while (1) {
     enter_name();         // enter name to check if youre in the data base
+    display_menu();       // displaying menu (the one the switch menu is referring to) 
 
     switch (menu_choice){
         case 1: 
@@ -84,9 +88,8 @@ while (1) {
     
 
 
- // FUNCTIONS       
+// FUNCTIONS       
         
-
 // Function to print out the menu 
 void display_menu(void){
     printf("\n-----------------------------\n"); // soley for visual purpose, to make it more visually appealing 
