@@ -34,12 +34,58 @@ void check_account();        // check if name exists
 
 // Main Function 
 int main() {
-enter_name();         // enter name to check if youre in the data base
+while (1) {
+    enter_name();         // enter name to check if youre in the data base
+
+    switch (menu_choice){
+        case 1: 
+            enter_weight(); 
+            break;
+        case 2: 
+            enter_height(); 
+            break;
+        case 3: 
+            enter_age();
+            break;
+        case 4: 
+            enter_bench(); 
+            break;
+        case 5: 
+            enter_squat();
+            break;
+        case 6:
+            enter_deadlift(); 
+            break;
+        case 7:
+                printf("-----------------------------\n");
+                printf("\nYou chose option 7!\n\nIt's a shame you don't want to continue!\nGoodbye.\n\nThis program terminates here :( \n\n");
+                return 0;
+        default: 
+                invalid_attempts++;
+                printf("\nThis is not a valid option.\n");
+                printf("So far you have entered %d invalid option(s).\n", invalid_attempts);
+                
+                if (invalid_attempts >= max_attempts) { // Checking whether its more than 3 attempts
+                    printf("\nYou don't seem too interested in speaking with me...\nGoodbye!\n\n");
+                    return 0;
+                
+                } else {
+                    printf("\nPlease press ENTER to try again!\n");
+                    clear_input_buffer();
+                }      
+        }
+    
+
+
+        
+        
 
 
 
 
 
+
+    
 
 
     
