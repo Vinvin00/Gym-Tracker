@@ -26,6 +26,7 @@ int age_choice;                 // variable to store user age choice
 int bench_choice;               // variable to store user bench choice
 int squat_choice;               // variable to store user squat choice
 int deadlift_choice;            // variable to store user deadlift choice
+//int check = 0; //             // variable to flag if the user is inside the 
 
 //Functions 
 void display_menu();        // function to display menu overview 
