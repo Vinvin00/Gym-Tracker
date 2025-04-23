@@ -524,7 +524,7 @@ void enter_deadlift(){
 
 //FUNCTION TO WRITE IN CSV FILE
 void write_csv(const char *filename, const char *area, int value) {
-    FILE *file = fopen(filename, "w");  //OPENS AND WRITES IN THE CSV FILE, OVERWRITES AND REPLACES ENTRY
+    FILE *file = fopen(filename, "a");  //OPENS AND WRITES IN THE CSV FILE, OVERWRITES AND REPLACES ENTRY
 
     if (!file) {
         perror("I'm sorry we couldn't open the CSV file :("); //ERROR MESSAGE TO DISPLAY IF FILE DID NOT OPEN CORRECTLY
