@@ -31,6 +31,7 @@ void check_account(char* name);  // function to check if name exists
 void write_csv(const char *filename, const char *area, int value);
 void clear_input_buffer();  // function to clear the input buffer
 void create_account();      // function to create account 
+void read_csv (const char *filename, const char *area);
  
 // Main Function 
 int main() {
@@ -271,7 +272,7 @@ void enter_weight(){
  switch (weight_choice){
      case 1:
         printf("\nYou chose Option 1: 'View your current weight'\n");
-        // code to view current weight
+        read_csv("GymInfo.csv", "Weight");
         clear_input_buffer();
         break; 
         
@@ -316,7 +317,7 @@ void enter_height(){
     switch (height_choice){
         case 1:
             printf("\nYou chose Option 1: 'View your current height'\n");
-            // code to view current height
+            read_csv("GymInfo.csv", "Height");
             clear_input_buffer();
             break; 
             
@@ -360,7 +361,7 @@ void enter_age(){
  switch (age_choice){
      case 1:
         printf("\nYou chose Option 1: 'View your current age'\n");
-        // code to view current age
+        read_csv("GymInfo.csv", "Age");
         clear_input_buffer();
         break;
         
@@ -404,7 +405,7 @@ void enter_bench(){
     switch (bench_choice){
         case 1:
             printf("\nYou chose Option 1: 'View your current bench'\n");
-            // code to view current bench
+            read_csv("GymInfo.csv", "Bench");
             clear_input_buffer();
             break; 
             
@@ -447,7 +448,7 @@ void enter_squat(){
  switch (squat_choice){
      case 1:
         printf("You chose Option 1: 'View your current squat'\n");
-        // code to view current squat
+        read_csv("GymInfo.csv", "Squat");
         clear_input_buffer();
         break;
         
@@ -492,7 +493,7 @@ void enter_deadlift(){
     switch (deadlift_choice){
         case 1:
             printf("\nYou chose Option 1: 'View your current deadlift'\n");
-            // code to view current deadlift
+            read_csv("GymInfo.csv", "Deadlift");
             clear_input_buffer();
             break;
             
@@ -533,3 +534,47 @@ void write_csv(const char *filename, const char *area, int value) {
     fprintf(file, "%s;%s;%d\n", name, area, value);  // PRINTS INTO FILE 
     fclose(file); //CLOSES FILE 
     }
+
+//Function to read in the CSV file
+void read_csv (const char *filename, const char *area) {
+    FILE *file = fopen(filename, "r");
+    if (!file){
+       perror ("I am sorry I could not open the CSV file.);
+       return;
+       }
+    char line[MAX_LINE_LENGTH];
+    while (fgets (line, sizeof(line), file)){
+       char file_name[50];
+       float weight, height, bench, squat, deadlift;
+       int age;
+
+       int fields = sscanf (line, "%49[^;]; %f; %f; %d; %f; %f; %f", file_name, &weight, &height, &age, &bench, &squat, &deadlift);
+
+        if (fields == 7 && strcmp(file_name, name) == 0) {
+            fclose(file);
+
+            if (strcmp(area, "Weight") == 0)
+                printf("Your current weight is: %.1f kg\n", weight);
+            else if (strcmp(area, "Height") == 0)
+                printf("Your current height is: %.1f cm\n", height);
+            else if (strcmp(area, "Age") == 0)
+                printf("Your current age is: %d years\n", age);
+            else if (strcmp(area, "Bench") == 0)
+                printf("Your current bench is: %.1f kg\n", bench);
+            else if (strcmp(area, "Squat") == 0)
+                printf("Your current squat is: %.1f kg\n", squat);
+            else if (strcmp(area, "Deadlift") == 0)
+                printf("Your current deadlift is: %.1f kg\n", deadlift);
+            else
+                printf("Unknown field: %s\n", area);
+
+            return;
+        }
+    }
+
+    fclose(file);
+    printf("We were not able to find your record inside our databae.\n);
+     }
+                            
+     
+        
