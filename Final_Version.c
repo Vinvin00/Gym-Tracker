@@ -573,7 +573,7 @@ void read_csv (const char *filename, const char *area) {
     }
 
     fclose(file);
-    printf("We were not able to find your record inside our databae.\n);
+    printf("We were not able to find your record inside our database.\n");
      }
                             
      
