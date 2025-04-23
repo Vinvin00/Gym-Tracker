@@ -7,6 +7,15 @@
 
 //Global Variables (Characters)
 char name[50] = "";             // variable to store the first name
+/* typedef struct{
+    char name [50];
+    float weight;
+    float height;
+    int age;
+    float bench;
+    float squat;
+    float deadlift;
+} User; */
 
 // Global Variables (Integers)
 int invalid_attempts = 0;
