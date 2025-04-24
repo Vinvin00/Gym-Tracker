@@ -41,7 +41,7 @@ void check_account(char* name);  // function to check if name exists
 void write_csv(const char *filename, const char *area, int value);
 void clear_input_buffer();  // function to clear the input buffer
 void create_account();      // function to create account 
-void read_csv (const char *filename, const char *area);
+void read_csv (name, const char *area);
  
 // Main Function 
 int main() {
@@ -282,7 +282,7 @@ void enter_weight(){
  switch (weight_choice){
      case 1:
         printf("\nYou chose Option 1: 'View your current weight'\n");
-        read_csv("GymInfo.csv", "Weight");
+        read_csv(name, "Weight");
         clear_input_buffer();
         break; 
         
@@ -327,7 +327,7 @@ void enter_height(){
     switch (height_choice){
         case 1:
             printf("\nYou chose Option 1: 'View your current height'\n");
-            read_csv("GymInfo.csv", "Height");
+            read_csv(name, "Height");
             clear_input_buffer();
             break; 
             
@@ -371,7 +371,7 @@ void enter_age(){
  switch (age_choice){
      case 1:
         printf("\nYou chose Option 1: 'View your current age'\n");
-        read_csv("GymInfo.csv", "Age");
+        read_csv(name, "Age");
         clear_input_buffer();
         break;
         
@@ -415,7 +415,7 @@ void enter_bench(){
     switch (bench_choice){
         case 1:
             printf("\nYou chose Option 1: 'View your current bench'\n");
-            read_csv("GymInfo.csv", "Bench");
+            read_csv(name, "Bench");
             clear_input_buffer();
             break; 
             
@@ -458,7 +458,7 @@ void enter_squat(){
  switch (squat_choice){
      case 1:
         printf("You chose Option 1: 'View your current squat'\n");
-        read_csv("GymInfo.csv", "Squat");
+        read_csv(name, "Squat");
         clear_input_buffer();
         break;
         
@@ -503,7 +503,7 @@ void enter_deadlift(){
     switch (deadlift_choice){
         case 1:
             printf("\nYou chose Option 1: 'View your current deadlift'\n");
-            read_csv("GymInfo.csv", "Deadlift");
+            read_csv(name, "Deadlift");
             clear_input_buffer();
             break;
             
@@ -546,45 +546,33 @@ void write_csv(const char *filename, const char *area, int value) {
     }
 
 //Function to read in the CSV file
-void read_csv (const char *filename, const char *area) {
-    FILE *file = fopen(filename, "r");
-    if (!file){
-       perror ("I am sorry I could not open the CSV file.);
-       return;
-       }
-    char line[MAX_LINE_LENGTH];
-    while (fgets (line, sizeof(line), file)){
-       char file_name[50];
-       float weight, height, bench, squat, deadlift;
-       int age;
+void read_csv(name, const char *area) {
+    int check = 0;
 
-       int fields = sscanf (line, "%49[^;]; %f; %f; %d; %f; %f; %f", file_name, &weight, &height, &age, &bench, &squat, &deadlift);
-
-        if (fields == 7 && strcmp(file_name, name) == 0) {
-            fclose(file);
+    for (int i = 0; i < user_count; i++) {
+        if (strcmp(users[i].name, name) == 0) {
+            check = 1;
 
             if (strcmp(area, "Weight") == 0)
-                printf("Your current weight is: %.1f kg\n", weight);
+                printf("Your current weight is: %.1f kg\n", users[i].weight);
             else if (strcmp(area, "Height") == 0)
-                printf("Your current height is: %.1f cm\n", height);
+                printf("Your current height is: %.1f cm\n", users[i].height);
             else if (strcmp(area, "Age") == 0)
-                printf("Your current age is: %d years\n", age);
+                printf("Your age is: %d\n", users[i].age);
             else if (strcmp(area, "Bench") == 0)
-                printf("Your current bench is: %.1f kg\n", bench);
+                printf("Your bench press is: %.1f kg\n", users[i].bench);
             else if (strcmp(area, "Squat") == 0)
-                printf("Your current squat is: %.1f kg\n", squat);
+                printf("Your squat is: %.1f kg\n", users[i].squat);
             else if (strcmp(area, "Deadlift") == 0)
-                printf("Your current deadlift is: %.1f kg\n", deadlift);
+                printf("Your deadlift is: %.1f kg\n", users[i].deadlift);
             else
-                printf("Unknown field: %s\n", area);
+                printf("Unknown area: %s\n", area);
 
-            return;
+            break;
         }
     }
 
-    fclose(file);
-    printf("We were not able to find your record inside our database.\n");
-     }
-                            
-     
-        
+    if (!check) {
+        printf("Sorry, no user with the name \"%s\" was found.\n", name);
+    }
+}
