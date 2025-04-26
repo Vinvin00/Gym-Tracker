@@ -777,7 +777,7 @@ void read_csv(const char *name, const char *area) {
         printf("\nEnter 1 to create an account or 2 to exit: ");
 
         int choice;
-        scanf("%d", %choice);
+        scanf("%d", &choice);
         clear_input_buffer();
 
         if (choice == 1) {
