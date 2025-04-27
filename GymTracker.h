@@ -1,9 +1,16 @@
-#define max_attempts 3          // Defining the maximum attempts possible (3) => DO WE NEED THAT?
-#define MAX_LINE_LENGTH 256     // Defining the maximum line length for the csv file (256)
-#define MAX_USERS 100           // Maximum number of users
+// gymtracker.h
 
-// STRUCTURE
-struct user {
+#ifndef GYMTRACKER_H
+#define GYMTRACKER_H
+
+// Preprocessor directives
+
+#define MAX_ATTEMPTS 3         // Maximum number of login attempts
+#define MAX_LINE_LENGTH 256    // Maximum line length for the CSV file
+#define MAX_USERS 100          // Maximum number of users
+
+// Structure
+typedef struct {
     char name[50];
     float weight;
     float height;
@@ -11,22 +18,29 @@ struct user {
     float bench;
     float squat;
     float deadlift;
-};
+} User;
 
-// GLOBAL VARIABLES
-char name[50] = "";             // variable to store the name
-char file_name[50];             // Buffer to store the name from the file
-char line[MAX_LINE_LENGTH];
-struct user users[MAX_USERS];   // Array to store user data
-int user_count = 0;             // Number of users currently loaded
-int invalid_attempts = 0;
-int menu_choice;                // variable to store user menu choice
-int height_choice;              // variable to store user height choice
-int weight_choice;              // variable to store user weight choice
-int age_choice;                 // variable to store user age choice
-int bench_choice;               // variable to store user bench choice
-int squat_choice;               // variable to store user squat choice
-int deadlift_choice;            // variable to store user deadlift choice
+// Global variable declarations
+extern char name[50];
+extern char file_name[50];
+extern char line[MAX_LINE_LENGTH];
+extern User users[MAX_USERS];
+extern int user_count;
+extern int invalid_attempts;
+extern int menu_choice;
+extern int height_choice;
+extern int weight_choice;
+extern int age_choice;
+extern int bench_choice;
+extern int squat_choice;
+extern int deadlift_choice;
+
+// Function declarations (add your real functions here)
+void loadUsersFromFile(const char *filename);
+void saveUsersToFile(const char *filename);
+void addUser(User new_user);
+void printAllUsers(void);
+
 
 
 // FUNCTION DECLARATION
@@ -48,3 +62,4 @@ void read_csv(const char *name, const char *area);  // Reads specific user data 
 void load_csv(const char *filename);                // Loads all user data from a CSV file into memory, where 'filename' is The name of the CSV file
 
 
+#endif // GYMTRACKER_H
