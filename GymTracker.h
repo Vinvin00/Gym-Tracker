@@ -1,5 +1,7 @@
 // GymTracker.h
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #ifndef GYMTRACKER_H
 #define GYMTRACKER_H
 
